@@ -1,0 +1,16 @@
+<div class="header"  [ngClass]="{'hidden': isHidden}">
+    <div class="conten_header">
+        <section class="logo" (click)="scollTop()">
+            <img src="https://scontent.fhan14-5.fna.fbcdn.net/v/t39.30808-1/473599103_1293849151888022_5202784821403639729_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=104&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeGhHQon04eDLMZ0WKimuzrtF-wJ6kiZ1CcX7AnqSJnUJ_JlR0WWnSELTc_oA4xGhbQnwHuvsumXMkYJd4tKEGGt&_nc_ohc=UePE878QMuMQ7kNvgGwC-9C&_nc_oc=AdhVBg6ZBXi_OZHWON-QZv8LT7o9CN4QZlpyN1E66B06Mmmk-Rz2v_WUvCa01FRE1j0&_nc_zt=24&_nc_ht=scontent.fhan14-5.fna&_nc_gid=A9P17tUzaBO4hk1s_Iz_D0W&oh=00_AYEtrSQn-Zc8px0teUr55VtZ_j5UTd-fa4wOXCk2vRgpLw&oe=67D1C5A4" alt="logo Minh Chau floor">
+        </section>
+        <section class="list_btn">
+            <button class="btn" 
+                    *ngFor="let item of listBtn; let i = index" 
+                    [ngClass]="{'active': item.active}"
+                    (click)="handleRouting(item)"
+                    >
+                {{item.name}}
+            </button>
+        </section> 
+    </div>    
+</div>
