@@ -2,7 +2,7 @@
     height: 90px;
     z-index: 100000;
     text-align: center;
-    border-bottom: 1px solid #ccc;
+    // border-bottom: 1px solid #eeeded;
     position: fixed;
     top: 0;
     left: 0;
@@ -15,7 +15,8 @@
     .conten_header{
         height: 100%;
         padding: 0 10%;
-        background-color: antiquewhite;
+        background-color: #cee6f5;
+        
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -51,7 +52,7 @@
                 cursor: pointer;
                 position: relative;
                 height: 100%;
-                transition: font-weight 0.3s ease-in-out;
+                transition: font-weight 1s ease-in-out;
             
                 &::after {
                     content: "";
@@ -61,7 +62,7 @@
                     width: 0;
                     height: 3px;
                     background-color: #007bff;
-                    transition: width 0.2s ease-in-out; 
+                    transition: width 0.5s ease-in-out; 
                 }
                 .focus {
                     box-shadow: none;
