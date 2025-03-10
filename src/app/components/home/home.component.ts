@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SubjectService } from 'src/app/service/subject.service';
 interface typeSilder {
@@ -10,16 +10,34 @@ interface listConstruction {
     urlImg: string,
     title: string,
 }
+interface typeFeedback {
+  name: string,
+  img: string
+  star:number,
+  des: string
+
+}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit{
+  @ViewChild('constructionSection') constructionSection!: ElementRef;
+  @ViewChild('feedback') feedback!: ElementRef;
   listImg: typeSilder[] = []
   construction: listConstruction[] = []
+  listFeed: typeFeedback[] = []
   products: any;
-  responsiveOptions: any[] | undefined;
+  slideConfig = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: true, 
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: false,
+    dots: false
+  };
   constructor(
     private route : Router,
     private subject: SubjectService
@@ -69,16 +87,54 @@ export class HomeComponent implements OnInit, AfterViewInit{
       { name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
       
     ];
+    this.listFeed = [
+      {
+        name: 'Nguyễn Văn Thăng',
+        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
+        img: '../../../assets/img/Thăng.jpg',
+        star: 4
+      },
+      {
+        name: 'Phạm Thị Hoa',
+        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
+        img: '../../../assets/img/Thăng.jpg',
+        star: 5
+      },
+      {
+        name: 'Nguyễn Văn Thăng',
+        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
+        img: '../../../assets/img/Thăng.jpg',
+        star: 3
+      },
+      {
+        name: 'Nguyễn Văn Thăng',
+        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
+        img: '../../../assets/img/Thăng.jpg',
+        star: 4
+      },
+      {
+        name: 'Phạm Thị Hoa',
+        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
+        img: '../../../assets/img/Thăng.jpg',
+        star: 5
+      },
+      {
+        name: 'Nguyễn Văn Thăng',
+        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
+        img: '../../../assets/img/Thăng.jpg',
+        star: 3
+      },
+    ]
   }
 
   
   ngAfterViewInit(): void {
+    this.handleConstruction()
+    this.handleFeedback()
     const items = document.querySelectorAll(".item1, .item2");
-  
     function handleScroll() {
       items.forEach((item) => {
         const rect = item.getBoundingClientRect();
-  
         if (rect.top < window.innerHeight - 100 && rect.bottom > 0) {
           item.classList.add("show"); 
         } else {
@@ -90,6 +146,35 @@ export class HomeComponent implements OnInit, AfterViewInit{
     window.addEventListener("scroll", handleScroll);
     handleScroll(); 
   }  
+  handleFeedback(){
+    const items = this.feedback.nativeElement.querySelectorAll('.itemFeedback');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show'); 
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach((item: any) => observer.observe(item));
+  }
+  handleConstruction(){
+    const items = this.constructionSection.nativeElement.querySelectorAll('.item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show'); 
+        }
+      });
+    }, { threshold: 0.5 });
+
+    items.forEach((item: any) => observer.observe(item));
+  }
+
   routing(page: string){
     this.route.navigate([page]);
     this.subject.routing.next(page)
@@ -114,3 +199,5 @@ export class HomeComponent implements OnInit, AfterViewInit{
     }
   }
 }
+
+

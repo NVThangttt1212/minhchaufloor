@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MinhChaufloor';
+
+  callUser() {
+    window.location.href = `tel:${'0393371798'}`;
+  }
+  
 }
