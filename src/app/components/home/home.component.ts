@@ -24,6 +24,7 @@ interface typeFeedback {
 })
 export class HomeComponent implements OnInit, AfterViewInit{
   @ViewChild('constructionSection') constructionSection!: ElementRef;
+  @ViewChild('company') company!: ElementRef;
   @ViewChild('feedback') feedback!: ElementRef;
   listImg: typeSilder[] = []
   construction: listConstruction[] = []
@@ -145,7 +146,24 @@ export class HomeComponent implements OnInit, AfterViewInit{
   
     window.addEventListener("scroll", handleScroll);
     handleScroll(); 
-  }  
+    this.handleCompany()
+  }
+
+  handleCompany(){
+   const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          this.company.nativeElement.classList.add('show');
+        }else {
+          this.company.nativeElement.classList.remove('show');
+        }
+      },
+      { threshold: 0.6 } 
+    );
+
+    observer.observe(this.company.nativeElement);
+  }
+
   handleFeedback(){
     const items = this.feedback.nativeElement.querySelectorAll('.itemFeedback');
     const observer = new IntersectionObserver((entries) => {

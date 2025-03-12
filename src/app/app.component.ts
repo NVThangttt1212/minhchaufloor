@@ -8,8 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'MinhChaufloor';
 
-  callUser() {
-    window.location.href = `tel:${'0393371798'}`;
+  callUser(type: string) {
+    if(type === 'phone'){
+      window.location.href = `tel:${'0393371798'}`;
+    }else{
+      window.open('https://zalo.me/0393371798', '_blank');
+    }
   }
   
 }

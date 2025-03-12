@@ -1,0 +1,34 @@
+.about{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 140px;
+  .expert{
+    img {
+      max-width: 300px;
+      max-height: 300px;
+    }
+  }
+  
+ 
+  h2, h1{
+    font-weight: bold;
+    color: #005aab;
+  }
+  .text-muted{
+    font-style: italic;
+  }
+  p{
+    color: #000 !important;
+    font-size: 18px;
+  }
+  .text_email{
+    cursor: pointer;
+    &:hover{
+      color: #005aab !important;
+      text-decoration: underline;
+    }
+  } 
+}
+

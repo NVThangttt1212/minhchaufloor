@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SubjectService } from 'src/app/service/subject.service';
 interface btnType {
-  name?: string,
+  name: string,
   route: string,
   active: boolean
 }
@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit{
   listBtn:btnType[] = [] 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private subject :SubjectService
   ) {
   }
@@ -32,9 +33,17 @@ export class HeaderComponent implements OnInit{
     }
     this.lastScrollTop = st <= 0 ? 0 : st; 
   }
+   
+  handleActiveBtn(){
+    window.onbeforeunload = () => {
+     
+    };
+  }
 
   ngOnInit(): void {
-    this.subject.url.subscribe(data=>{
+    
+    this.handleActiveBtn()
+    this.subject.url.subscribe(data=>{ 
       this.listBtn.forEach((e:btnType, index: number)=>{
         e.active = false
         if(e.route === data){
@@ -52,8 +61,19 @@ export class HeaderComponent implements OnInit{
       { name: 'Dự án thi công', route: 'construction', active: false },
       { name: 'Liên hệ', route: 'contact', active: false },
     ]
+    const curentUrl = localStorage.getItem('routing')
+    if(curentUrl){
+      this.listBtn.forEach((e:btnType)=>{
+        e.active = false
+        if(e.route === curentUrl){
+          e.active = true
+        }
+      })
+      console.log('list', this.listBtn)
+    }
   }
   handleRouting(item :btnType){
+    localStorage.setItem('routing', item.route)
     this.listBtn.forEach((e:btnType)=>{
       e.active = false
       if(e.name === item.name){
