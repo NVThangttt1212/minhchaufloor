@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SubjectService } from 'src/app/service/subject.service';
 interface typeSilder {
@@ -25,11 +25,11 @@ interface typeFeedback {
 export class HomeComponent implements OnInit, AfterViewInit{
   @ViewChild('constructionSection') constructionSection!: ElementRef;
   @ViewChild('company') company!: ElementRef;
-  @ViewChild('feedback') feedback!: ElementRef;
   listImg: typeSilder[] = []
   construction: listConstruction[] = []
   listFeed: typeFeedback[] = []
   products: any;
+  numVisibleItems: number = 2;
   slideConfig = {
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -46,7 +46,27 @@ export class HomeComponent implements OnInit, AfterViewInit{
 
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.updateNumVisible();
+  }
+
+  updateNumVisible() {
+    if (window.innerWidth < 768) {
+      this.numVisibleItems = 1;
+    } else {
+      this.numVisibleItems = 2;
+    }
+  }
+
+  scrollToTop(){
+    window.scrollTo({top:0})
+  }
+  
   ngOnInit(): void{
+    this.updateNumVisible();
+    this.scrollToTop()
+
     this.listImg = [
       {
         urlImg: '../../../assets/img/bgsan.jpg',
@@ -131,7 +151,6 @@ export class HomeComponent implements OnInit, AfterViewInit{
   
   ngAfterViewInit(): void {
     this.handleConstruction()
-    this.handleFeedback()
     const items = document.querySelectorAll(".item1, .item2");
     function handleScroll() {
       items.forEach((item) => {
@@ -164,20 +183,6 @@ export class HomeComponent implements OnInit, AfterViewInit{
     observer.observe(this.company.nativeElement);
   }
 
-  handleFeedback(){
-    const items = this.feedback.nativeElement.querySelectorAll('.itemFeedback');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show'); 
-        }
-      });
-    }, { threshold: 0.1 });
-
-    items.forEach((item: any) => observer.observe(item));
-  }
   handleConstruction(){
     const items = this.constructionSection.nativeElement.querySelectorAll('.item');
     const observer = new IntersectionObserver((entries) => {

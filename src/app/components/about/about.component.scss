@@ -1,4 +1,5 @@
 .about{
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,9 +11,29 @@
       max-height: 300px;
     }
   }
+  .animated {
+    opacity: 0;
+    transition: all 1s ease-in-out;
+  }
   
+  .animation-left {
+    transform: translateX(-50%);
+  }
+  
+  .animation-right {
+    transform: translateX(50%);
+  }
+  
+  .animation-bottom {
+    transform: translateY(50%);
+  }
+  
+  .show {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
  
-  h2, h1{
+  h2, h1, h3{
     font-weight: bold;
     color: #005aab;
   }

@@ -1,0 +1,96 @@
+/* Căn chỉnh tổng thể */
+.contact-page {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.contact-page h2 {
+  color: #007bff;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.contact-page p {
+  font-size: 16px;
+}
+
+/* Thiết kế thẻ card */
+.contact-page .card {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact-page .card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-page .card h4 {
+  color: #333;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.contact-page .card p {
+  color: #666;
+}
+
+/* Căn chỉnh section chính */
+.contact-page section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Cấu hình cột */
+.contact-page .col-md-6 {
+  flex: 1;
+  min-width: 350px;
+}
+
+.fb-page{
+  height: 240px;
+}
+.contact-page iframe {
+  width: 100%;
+  height: 240px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact_right{
+  max-height:606px !important;
+  padding: 8px;
+  border-radius: 4px;
+  overflow: scroll;
+}
+
+/* Tạo khoảng cách cho thông tin liên hệ */
+.contact-page .fw-bold {
+  color: #000;
+  font-size: 18px;
+}
+
+/* Link */
+.contact-page a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.contact-page a:hover {
+  text-decoration: underline;
+}
+
+/* Đáp ứng mobile */
+@media (max-width: 768px) {
+  .contact-page section {
+      flex-direction: column;
+  }
+
+  .contact-page .col-md-6 {
+      width: 100%;
+  }
+}

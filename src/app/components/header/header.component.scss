@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+
+.show {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
 .header{
-    height: 90px;
+    height: 100px;
     z-index: 100000;
     text-align: center;
-    // border-bottom: 1px solid #eeeded;
     position: fixed;
     top: 0;
     left: 0;
@@ -12,10 +17,11 @@
     &.hidden {
         transform: translateY(-100%); 
     }
+    
     .conten_header{
         height: 100%;
         padding: 0 10%;
-        background-color: #cee6f5;
+        background-color: transparent;
         
         display: flex;
         align-items: center;
@@ -44,6 +50,7 @@
             justify-content: space-around;
             align-items: center;
             .btn {
+                color: #fff;
                 font-weight: 500;
                 font-size: 18px;
                 border: none;
@@ -83,3 +90,210 @@
         
     }
 }
+
+.lineBottom{
+    border-bottom: 1px solid #ccc;
+}
+.banner {
+    position: relative;
+    height: 70vh;
+    background: linear-gradient(45deg, #0a2842,#5a4c70 , #a67fac , #985e9e);
+    background-size: 300% 300%;
+    .imgBottom{
+        height: 240px;
+        width: 100%;
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+        left: 0;
+        opacity: 0;
+        transform: translateY(100%);
+        animation: slideUp 1s ease-out forwards;
+    }
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes rightUp {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .banner_text{
+        color: #fff;
+        background-color: rgba(210, 236, 207, 0.1);
+        padding: 24px;
+        position: absolute;
+        top: 32%;
+        right: 10%;
+        transform: translateY(100%);
+        animation: rightUp 1s ease-out forwards;
+        span{
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif; /* Kiểu chữ góc cạnh, hiện đại */
+            font-size: 30px; 
+            font-weight: 400;
+
+        }
+        .company-name {
+            font-family: 'Oswald', sans-serif; /* Kiểu chữ góc cạnh, hiện đại */
+            font-size: 40px; /* Cỡ chữ mặc định */
+            text-transform: uppercase; /* Viết hoa tất cả */
+            font-weight: 900;
+            margin: 0;
+            
+        }
+        p{
+            margin-top: 10px;
+            font-size: 18px;
+            font-style: italic;
+        }
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .header {
+        height: 80px;
+        .conten_header {
+            padding: 0 5%;
+            .logo {
+                width: 150px;
+                img {
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+            .list_btn {
+                width: 60%;
+                .btn {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .banner {
+        height: 60vh;
+        .banner_text {
+            top: 28%;
+            right: 5%;
+            padding: 20px;
+            span {
+                font-size: 26px;
+            }
+            .company-name {
+                font-size: 36px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+        .imgBottom {
+            height: 180px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 70px;
+        .conten_header {
+            padding: 0 3%;
+            flex-direction: column;
+            .logo {
+                width: 130px;
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            .list_btn {
+                width: 100%;
+                justify-content: center;
+                .btn {
+                    font-size: 14px;
+                    padding: 6px;
+                }
+            }
+        }
+    }
+
+    .banner {
+        height: 50vh;
+        .banner_text {
+            top: 25%;
+            right: 3%;
+            text-align: center;
+            span {
+                font-size: 24px;
+            }
+            .company-name {
+                font-size: 30px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+        .imgBottom {
+            height: 150px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        height: 60px;
+        .conten_header {
+            padding: 0 2%;
+            .logo {
+                width: 100px;
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+            .list_btn {
+                flex-wrap: wrap;
+                .btn {
+                    font-size: 12px;
+                    padding: 4px;
+                }
+            }
+        }
+    }
+
+    .banner {
+        height: 40vh;
+        .banner_text {
+            top: 20%;
+            right: 2%;
+            span {
+                font-size: 20px;
+            }
+            .company-name {
+                font-size: 24px;
+            }
+            p {
+                font-size: 12px;
+            }
+        }
+        .imgBottom {
+            height: 120px;
+        }
+    }
+}
+
+  
