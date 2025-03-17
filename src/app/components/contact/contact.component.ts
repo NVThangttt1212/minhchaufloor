@@ -26,7 +26,6 @@ export class ContactComponent implements AfterViewInit{
 
   submitForm() {
     alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm.');
-    console.log(this.contact);
     this.contact = { name: '', email: '', phone: '', message: '' }; // Reset form
   }
 

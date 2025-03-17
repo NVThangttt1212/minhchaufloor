@@ -66,7 +66,6 @@ export class HeaderComponent implements OnInit, AfterViewInit{
     ]
     const curentUrl = sessionStorage.getItem('routing')
     this.url = curentUrl || 'home'
-    console.log('chạy')
     if(curentUrl){
       this.listBtn.forEach((e:btnType)=>{
         e.active = false
