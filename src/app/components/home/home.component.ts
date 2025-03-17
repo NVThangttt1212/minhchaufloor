@@ -95,17 +95,17 @@ export class HomeComponent implements OnInit, AfterViewInit{
       {urlImg: '../../../assets/img/Thăng.jpg', title: 'dự án 8'}
     ]
     this.products = [
-      { name: 'Laptop', image: '../../../assets/img/Thăng.jpg' },
-      { name: 'Smartphone', image: '../../../assets/img/Thăng.jpg'},
-      { name: 'Headphones', image: '../../../assets/img/Thăng.jpg' },
-      { name: 'Keyboard', image: '../../../assets/img/Thăng.jpg'},
-      { name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
-      { name: 'Headphones', image: '../../../assets/img/Thăng.jpg' },
-      { name: 'Keyboard', image: '../../../assets/img/Thăng.jpg'},
-      { name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
-      { name: 'Headphones', image: '../../../assets/img/Thăng.jpg' },
-      { name: 'Keyboard', image: '../../../assets/img/Thăng.jpg'},
-      { name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
+      { id: 1, name: 'Laptop', image: '../../../assets/img/Thăng.jpg' },
+      { id: 2, name: 'Smartphone', image: '../../../assets/img/Thăng.jpg'},
+      { id: 3, name: 'Headphones', image: '../../../assets/img/Thăng.jpg' },
+      { id: 4,  name: 'Keyboard', image: '../../../assets/img/Thăng.jpg'},
+      { id: 5,  name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
+      { id: 6,  name: 'Headphones', image: '../../../assets/img/Thăng.jpg' },
+      { id: 7,  name: 'Keyboard', image: '../../../assets/img/Thăng.jpg'},
+      { id: 8,  name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
+      { id: 9,  name: 'Headphones', image: '../../../assets/img/Thăng.jpg' },
+      { id: 10,  name: 'Keyboard', image: '../../../assets/img/Thăng.jpg'},
+      { id: 11,  name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
       
     ];
     this.listFeed = [
@@ -177,7 +177,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
           this.company.nativeElement.classList.remove('show');
         }
       },
-      { threshold: 0.6 } 
+      { threshold: 0.2 } 
     );
 
     observer.observe(this.company.nativeElement);
@@ -201,10 +201,16 @@ export class HomeComponent implements OnInit, AfterViewInit{
   routing(page: string){
     this.route.navigate([page]);
     this.subject.routing.next(page)
+    localStorage.setItem('routing', String(page))
   }
 
-  detailProduct(product: any){
-
+  detailProduct(product: any) {
+    if (!product || !product.id) {
+      return;
+    }
+    localStorage.setItem('routing', String('product/'+ product.id))
+    this.subject.routing.next(product.id)
+    this.route.navigate([`product/${product.id}`]); 
   }
 
   

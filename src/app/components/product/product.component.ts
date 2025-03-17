@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SubjectService } from 'src/app/service/subject.service';
 
 @Component({
   selector: 'app-product',
@@ -7,27 +9,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit{
   listProduct:{
+    id: number
     name: string,
     img: string,
-    material: string,
-    des: string,
-    price: number
+    des: string
+
   }[] = []
 
+
+  constructor(
+    private route : Router,
+    private subject: SubjectService
+  ){
+
+  }
  
   ngOnInit(): void {
     this.scrollToTop()
     this.listProduct = [
-      { name: 'Sản phẩm A', img: '../../../assets/img/Thăng.jpg', material: 'Da cao cấp', des: 'Chất liệu bền đẹp, chống nước', price: 1200000 },
-      { name: 'Sản phẩm B', img: '../../../assets/img/Thăng.jpg', material: 'Thép không gỉ', des: 'Thiết kế sang trọng, hiện đại', price: 850000 },
-      { name: 'Sản phẩm C', img: '../../../assets/img/Thăng.jpg', material: 'Nhựa ABS', des: 'Siêu nhẹ, bền bỉ theo thời gian', price: 650000 },
-      { name: 'Sản phẩm D', img: '../../../assets/img/Thăng.jpg', material: 'Gỗ tự nhiên', des: 'Phong cách cổ điển, tinh tế', price: 1500000 },
-      { name: 'Sản phẩm E', img: '../../../assets/img/Thăng.jpg', material: 'Sợi carbon', des: 'Siêu bền, chịu lực tốt', price: 1950000 }
+      { id: 1, name: 'Laptop', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm' },
+      { id: 2, name: 'Smartphone', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm'},
+      { id: 3, name: 'Headphones', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm' },
+      { id: 4,  name: 'Keyboard', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm'},
+      { id: 5,  name: 'Monitor', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm'},
+      { id: 6,  name: 'Headphones', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm' },
+      { id: 7,  name: 'Keyboard', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm'},
+      { id: 8,  name: 'Monitor', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm'},
+      { id: 9,  name: 'Headphones', img: '../../../assets/img/Thăng.jpg' , des: 'mô tả sản phẩm'},
+      { id: 10,  name: 'Keyboard', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm'},
+      { id: 11,  name: 'Monitor', img: '../../../assets/img/Thăng.jpg', des: 'mô tả sản phẩm'},
+      
     ];
   
   }
 
   scrollToTop(){
     window.scrollTo({top:0})
+  }
+
+  detailProduct(product: any) {
+    if (!product || !product.id) {
+      return;
+    }
+    localStorage.setItem('routing', String('product/'+ product.id))
+    this.subject.routing.next(product.id)
+    this.route.navigate([`product/${product.id}`]); 
   }
 }

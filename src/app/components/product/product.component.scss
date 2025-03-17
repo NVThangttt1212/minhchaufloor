@@ -1,6 +1,6 @@
 .product-page {
     text-align: center;
-    margin: 40px 0;
+    padding: 40px 0;
   
     .product-title {
       font-size: 28px;
@@ -16,6 +16,7 @@
       padding: 0 20px;
   
       .product-card {
+        cursor: pointer;
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -69,8 +70,19 @@
   
           .description {
             font-size: 14px;
+            max-width: 200px;
             color: #444;
             margin-bottom: 10px;
+            white-space: nowrap;  
+            overflow: hidden;      
+            text-overflow: ellipsis;
+          }
+          .contact{
+            color: #fff;
+           
+          }
+          .contact:hover{
+            text-decoration: none;
           }
   
           .price {

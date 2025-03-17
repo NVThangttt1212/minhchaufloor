@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit, AfterViewInit{
   onScroll(): void {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
-    this.outTop = scrollPosition > 400;
+    this.outTop = scrollPosition > 40;
     
     const st = window.pageYOffset || document.documentElement.scrollTop;
     if (st > this.lastScrollTop) {
@@ -37,7 +37,6 @@ export class HeaderComponent implements OnInit, AfterViewInit{
 
       this.isHidden = false;
     }
-    console.log(this.isHidden)
     this.lastScrollTop = st <= 0 ? 0 : st; 
   }
    
@@ -46,7 +45,8 @@ export class HeaderComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     this.handleActiveBtn()
-    this.subject.url.subscribe(data=>{ 
+    this.subject.routing.subscribe(data=>{ 
+      this.url = data
       this.listBtn.forEach((e:btnType, index: number)=>{
         e.active = false
         if(e.route === data){
@@ -66,6 +66,7 @@ export class HeaderComponent implements OnInit, AfterViewInit{
     ]
     const curentUrl = sessionStorage.getItem('routing')
     this.url = curentUrl || 'home'
+    console.log('chạy')
     if(curentUrl){
       this.listBtn.forEach((e:btnType)=>{
         e.active = false
@@ -73,7 +74,6 @@ export class HeaderComponent implements OnInit, AfterViewInit{
           e.active = true
         }
       })
-      console.log('list', this.listBtn)
     }
   }
 

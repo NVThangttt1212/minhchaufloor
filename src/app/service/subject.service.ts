@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class SubjectService {
-  routing = new BehaviorSubject<string>('');
-  url = this.routing.asObservable();
+  routing = new Subject<string>
   constructor() { }
  
 }

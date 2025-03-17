@@ -51,11 +51,10 @@
                             <div class="mb-3">
                                 <div class="relative mx-auto img-container" style="display: flex; justify-content: center; align-items: center;">
                                     <img 
-                                        (click)="detailProduct(product)"
                                         src="{{ product.image }}" 
                                         [alt]="product.name" 
                                         class="w-full border-round" />
-                                        <div class="overlay">
+                                        <div class="overlay" (click)="detailProduct(product)">
                                           <span class="overlay-text">Xem chi tiết</span>
                                       </div>
                                 </div>

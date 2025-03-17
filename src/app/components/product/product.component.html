@@ -1,15 +1,18 @@
-<section class="product-page container">
+<section class="product-page ">
     <h2 class="product-title">Danh sách sản phẩm</h2>
-    <div class="product-grid">
-      <div class="product-card" *ngFor="let product of listProduct">
-        <div class="product-img">
-          <img [src]="product.img" [alt]="product.name">
-        </div>
-        <div class="product-info">
-          <h3>{{ product.name }}</h3>
-          <p class="material">Chất liệu: <strong>{{ product.material }}</strong></p>
-          <p class="description">{{ product.des }}</p>
-          <p class="price">{{ product.price | number }} VNĐ</p>
+    <div class="container">
+      <div class="product-grid">
+        <div class="product-card" *ngFor="let product of listProduct">
+          <div class="product-img" (click)="detailProduct(product)">
+            <img [src]="product.img" [alt]="product.name">
+          </div>
+          <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p class="description">{{ product.des }}</p>
+            <button class="btn btn-primary">
+              <a class="contact" style="color: #fff; text-decoration: none;" href="tel:+0393371798">liên hệ ngay</a>
+            </button>
+          </div>
         </div>
       </div>
     </div>
