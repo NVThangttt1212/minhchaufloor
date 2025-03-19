@@ -29,14 +29,14 @@
         <section class="construction" #constructionSection>
           <h3>Dự án thực thi</h3>
           <div class="list_construction row">
-            <div class="item col-3" *ngFor="let item of construction; let i = index">
+            <div class="item col-3" *ngFor="let item of construction.slice(0, 8) let i = index" (click)="detailConstruction(item)">
               <img src="{{item.urlImg}}" alt="{{i}}">
               <h5>{{item.title}}</h5>
             </div>
           </div>
           <button class="vỉewDetail" (click)="routing('construction')">xem thêm</button>
         </section>
-        <section class="product " >
+        <section class="product">
           <div class="product_content container" >
             <h3 style="margin-bottom: 30px;"> các sản phẩm tiêu biểu</h3>
             <p-carousel 
@@ -51,7 +51,7 @@
                             <div class="mb-3">
                                 <div class="relative mx-auto img-container" style="display: flex; justify-content: center; align-items: center;">
                                     <img 
-                                        src="{{ product.image }}" 
+                                        src="{{ product.img }}" 
                                         [alt]="product.name" 
                                         class="w-full border-round" />
                                         <div class="overlay" (click)="detailProduct(product)">
@@ -82,7 +82,7 @@
                     <img src="../../../assets/img/we.png" alt="">
                   </div>
                    <div>
-                     <h4 style="color: #007BFF;">Dịch vụ chuyên nghiệp</h4>
+                     <h4>Dịch vụ chuyên nghiệp</h4>
                      <p>Đội ngũ giàu kinh nghiệm, tận tâm phục vụ khách hàng, thiết kế sang trọng.</p>
                    </div>
                 </div>
@@ -92,7 +92,7 @@
               <div class="about_item_content item2" style="padding-left: 40px;">
                 <div class="about_item_content_2">
                   <div>
-                    <h4 style="color: #D72638;">Giá cả hợp lý</h4>
+                    <h4>Giá cả hợp lý</h4>
                     <p>Giá cả minh bạch hợp lý, không phát sinh chi phí ẩn.</p>
                   </div>
                   <div>
@@ -108,7 +108,7 @@
                     <img src="../../../assets/img/company.png" alt="">
                   </div>
                   <div>
-                    <h4 style="color: #FFD700;">Đảm bảo chất lượng</h4>
+                    <h4>Đảm bảo chất lượng</h4>
                     <p>Đảm bảo chất lượng và sẵn sàng hỗ trợ bạn bất cứ lúc nào.</p>
                   </div>
                 </div>

@@ -1,0 +1,38 @@
+<div class="container detailProject">
+ 
+    <div class="detailProjectRouting">
+      <button class="back" (click)="back()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M34.5 239L228.9 44.7c9.4-9.4 24.6-9.4 33.9 0l22.7 22.7c9.4 9.4 9.4 24.5 0 33.9L131.5 256l154 154.8c9.3 9.4 9.3 24.5 0 33.9l-22.7 22.7c-9.4 9.4-24.6 9.4-33.9 0L34.5 273c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+        <span>Quay lại</span>
+      </button>
+      <h2 style="text-align: center;">Chi tiết dự án</h2>
+    </div>
+      <div class="container project-detail">
+        <!-- Ảnh dự án -->
+        <div class="project-image">
+          <img [src]="project.urlImg" class="img-fluid" alt="{{ project.title }}">
+        </div>
+      
+        <!-- Thông tin dự án -->
+        <div class="project-info">
+          <h2 class="project-title">{{ project.title }}</h2>
+      
+          <div class="project-meta">
+            <p><strong>Khách hàng:</strong> {{ project.nameCustomer || 'Không có thông tin' }}</p>
+            <p>
+              <strong>Thời gian:</strong>
+              {{ project.timeFrom | date:'MM/yyyy' }} - {{ project.timeTo ? (project.timeTo | date:'MM/yyyy') : 'Đang thực hiện' }}
+            </p>
+          </div>
+      
+          <!-- Đánh giá sao -->
+          <div class="rating">
+            <span *ngFor="let star of stars" class="star" [class.filled]="star <= project.feedback">&#9733;</span>
+          </div>
+      
+          <!-- Mô tả dự án -->
+          <p class="project-description">{{ project.des }}</p>
+        </div>
+      </div>
+      
+</div>

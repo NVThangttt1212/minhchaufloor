@@ -1,0 +1,14 @@
+.itemProject{
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+.card{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-text {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    max-width: 100%;
+  }
+  

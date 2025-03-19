@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/service/data.service';
 import { SubjectService } from 'src/app/service/subject.service';
 interface typeSilder {
   urlImg: string,
@@ -7,8 +8,13 @@ interface typeSilder {
   des: string
 }
 interface listConstruction {
-    urlImg: string,
-    title: string,
+  urlImg: string,
+  title: string,
+  nameCustomer?: string,
+  timeFrom?: Date,
+  timeTo?: Date,
+  des?:string,
+  feedback?: number 
 }
 interface typeFeedback {
   name: string,
@@ -41,7 +47,8 @@ export class HomeComponent implements OnInit, AfterViewInit{
   };
   constructor(
     private route : Router,
-    private subject: SubjectService
+    private subject: SubjectService,
+     private dataService: DataService
   ){
 
   }
@@ -66,7 +73,6 @@ export class HomeComponent implements OnInit, AfterViewInit{
   ngOnInit(): void{
     this.updateNumVisible();
     this.scrollToTop()
-
     this.listImg = [
       {
         urlImg: '../../../assets/img/bgsan.jpg',
@@ -84,68 +90,9 @@ export class HomeComponent implements OnInit, AfterViewInit{
         des: 'đây là mô tả cho dự án 3'
       }
     ]
-    this.construction = [
-      {urlImg: '../../../assets/img/Thăng.jpg', title: 'dự án 1'},
-      {urlImg: '../../../assets/img/Thăng.jpg', title: 'dự án 2'},
-      {urlImg: '../../../assets/img/Thăng.jpg', title: 'dự án 3'},
-      {urlImg: '../../../assets/img/Thăng.jpg', title: 'dự án 4'},
-      {urlImg: '../../../assets/img/Thăng.jpg', title: 'dự án 5'},
-      {urlImg: '../../../assets/img/Thăng.jpg', title: 'dự án 6'},
-      {urlImg: '../../../assets/img/Thăng.jpg', title: 'dự án 7'},
-      {urlImg: '../../../assets/img/Thăng.jpg', title: 'dự án 8'}
-    ]
-    this.products = [
-      { id: 1, name: 'Laptop', image: '../../../assets/img/Thăng.jpg' },
-      { id: 2, name: 'Smartphone', image: '../../../assets/img/Thăng.jpg'},
-      { id: 3, name: 'Headphones', image: '../../../assets/img/Thăng.jpg' },
-      { id: 4,  name: 'Keyboard', image: '../../../assets/img/Thăng.jpg'},
-      { id: 5,  name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
-      { id: 6,  name: 'Headphones', image: '../../../assets/img/Thăng.jpg' },
-      { id: 7,  name: 'Keyboard', image: '../../../assets/img/Thăng.jpg'},
-      { id: 8,  name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
-      { id: 9,  name: 'Headphones', image: '../../../assets/img/Thăng.jpg' },
-      { id: 10,  name: 'Keyboard', image: '../../../assets/img/Thăng.jpg'},
-      { id: 11,  name: 'Monitor', image: '../../../assets/img/Thăng.jpg'},
-      
-    ];
-    this.listFeed = [
-      {
-        name: 'Nguyễn Văn Thăng',
-        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
-        img: '../../../assets/img/Thăng.jpg',
-        star: 4
-      },
-      {
-        name: 'Phạm Thị Hoa',
-        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
-        img: '../../../assets/img/Thăng.jpg',
-        star: 5
-      },
-      {
-        name: 'Nguyễn Văn Thăng',
-        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
-        img: '../../../assets/img/Thăng.jpg',
-        star: 3
-      },
-      {
-        name: 'Nguyễn Văn Thăng',
-        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
-        img: '../../../assets/img/Thăng.jpg',
-        star: 4
-      },
-      {
-        name: 'Phạm Thị Hoa',
-        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
-        img: '../../../assets/img/Thăng.jpg',
-        star: 5
-      },
-      {
-        name: 'Nguyễn Văn Thăng',
-        des: 'sản phẩm cũng rất tốt nhưng ăn cùng mắm tôm thì ngon tuyệt vời',
-        img: '../../../assets/img/Thăng.jpg',
-        star: 3
-      },
-    ]
+    this.construction = this.dataService.construction
+    this.products = this.dataService.listProduct
+    this.listFeed = this.dataService.listFeed
   }
 
   
@@ -211,6 +158,15 @@ export class HomeComponent implements OnInit, AfterViewInit{
     localStorage.setItem('routing', String('product/'+ product.id))
     this.subject.routing.next(product.id)
     this.route.navigate([`product/${product.id}`]); 
+  }
+
+  detailConstruction(project: any){
+    if (!project || !project.id) {
+      return;
+    }
+    localStorage.setItem('routing', String('construction/'+ project.id))
+    this.subject.routing.next(project.id)
+    this.route.navigate([`construction/${project.id}`]);  
   }
 
   

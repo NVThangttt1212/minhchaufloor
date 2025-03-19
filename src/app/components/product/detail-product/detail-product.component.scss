@@ -1,0 +1,118 @@
+.detailProduct{
+    .data_product{
+        border-bottom: 1px solid #eceeef;
+    }
+    .detailProductRouting{
+        display: flex;
+        align-items: center;
+        svg{
+            width: 22px;
+            height: 22px;
+        }
+        h5{
+            margin: 0;
+        }
+    }
+    h3{
+        font-weight: 700;
+    }
+    margin: 40px auto ;
+    margin-top: 140px;
+    .img-fluid {
+        max-height: 350px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .contact{
+        border: none;
+        max-width: 180px;
+        padding: 4px;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #fff;
+        text-align: center;
+        background-color: #005aab;
+        transform: transform 0.3s ease-in-out;
+        text-decoration:none ;
+       
+    }
+    .contact:hover {
+        transform: scale(1.09);
+    }
+  .list_product{
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
+    h3{
+        font-weight: 700;
+    }
+    img{
+        cursor: pointer;
+       height: 300px;
+       width: 100%;
+    }
+    .product_item{
+        padding: 4px;
+        transition: transform 0.3s ease-in-out;
+        &:hover {
+            transform: scale(1.02); 
+        }
+        overflow: hidden;
+        border-radius: 8px;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+        .text_product{
+            padding:  8px ;
+            text-align: center;
+            font-weight: 700;
+        }
+        .product_contact{
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .img-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .img-product {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 8px; 
+        }
+        
+        .overlay-text {
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .img-container:hover .overlay {
+            cursor: pointer;
+            opacity: 1;
+        }
+        
+    }
+}  
+}

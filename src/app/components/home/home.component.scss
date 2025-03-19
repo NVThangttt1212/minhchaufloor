@@ -200,7 +200,7 @@
                 .about_item_content{
                     width: 74%;
                     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-                    background-color: rgb(206, 221, 240);
+                    background-color: rgb(94, 146, 213);
                     height: 100%;
                     display: flex;
                     align-items: center;
@@ -215,6 +215,7 @@
                             justify-content: center;
                             flex-direction: column;
                             width: 50%;
+                            color: #fff !important;
                             img{
                                 width: 50%;
                                 height: 50%;

@@ -1,0 +1,91 @@
+.detailProject{
+
+    padding: 40px 0 ;
+    .data_product{
+        border-bottom: 1px solid #eceeef;
+    }
+   
+    .detailProjectRouting{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+        h2{
+            margin: 0;
+            font-weight: bold;
+            color: #005aab;
+        }
+
+        .back{
+            left: 0;
+            position: absolute;
+            padding: 4px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            svg{
+                width: 20px;
+                height: 20px;
+            }
+            span{
+                padding: 4px;
+            }
+        }
+    }
+    h3{
+        font-weight: 700;
+    }
+
+    .project-detail {
+        margin: 0 auto;
+        padding: 40px 20px;
+        text-align: center;
+      }
+      
+      .project-image img {
+        width: 100%;
+        max-height: 420px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      
+      .project-info {
+        margin-top: 20px;
+        text-align: left;
+      }
+      
+      .project-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .project-meta p {
+        font-size: 16px;
+        color: #666;
+        margin: 5px 0;
+      }
+      
+      .rating {
+        margin: 10px 0;
+      }
+      
+      .star {
+        font-size: 24px;
+        color: #ccc;
+      }
+      
+      .star.filled {
+        color: #FFD700; /* Màu vàng */
+      }
+      
+      .project-description {
+        font-size: 16px;
+        color: #444;
+        line-height: 1.6;
+      }
+      
+}
